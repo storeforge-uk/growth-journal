@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Growth Journal</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    #journalEntries {
+      margin-top: 40px;
+    }
+
+    #entries .entry {
+      margin-bottom: 30px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #f9f9f9;
+    }
+
+    #confirmationMessage {
+      margin-top: 20px;
+      font-weight: bold;
+      color: green;
+    }
+
+    @media (max-width: 600px) {
+      textarea {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Growth Journal</h1>
+  </header>
+
+  <main>
+    <form id="journalForm">
+      <label for="q1">What did I do today that moved me closer to my goals?</label>
+      <textarea id="q1" name="q1" required></textarea>
+
+      <label for="q2">What will I improve tomorrow?</label>
+      <textarea id="q2" name="q2" required></textarea>
+
+      <label for="q3">What did I learn today?</label>
+      <textarea id="q3" name="q3"></textarea>
+
+      <label for="q4">What am I grateful for today?</label>
+      <textarea id="q4" name="q4"></textarea>
+
+      <button type="submit">Save Entry</button>
+    </form>
+
+    <div id="confirmationMessage" class="confirmation"></div>
+
+    <section id="journalEntries">
+      <h2>Your Journal Entries</h2>
+      <div id="entries"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Growth Journal</p>
+  </footer>
+
+  <!-- Firebase SDKs and initialization -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBcWZqgKEiSFb7oYluHo6rYda8rlCN1aZQ",
+      authDomain: "growth-journal-e5c15.firebaseapp.com",
+      projectId: "growth-journal-e5c15",
+      storageBucket: "growth-journal-e5c15.appspot.com",
+      messagingSenderId: "58006359293",
+      appId: "1:58006359293:web:8dc151d0b53de3bc640294"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    window.db = db; // expose globally for script.js
+  </script>
+
+  <!-- App Logic -->
+  <script type="module" src="script.js"></script>
+</body>
+
+</html>
